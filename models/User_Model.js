@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
     lowercase: true
   },
   score: {
-    type: int,
+    type: Number,
     default: 0
   },
 });
