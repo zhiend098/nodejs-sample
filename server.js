@@ -12,7 +12,7 @@ app.use(express.json()) // parses application/json
 app.use(express.urlencoded({ extended: true }))
 
 
-const url = 'mongodb+srv://m001-student:m001-mongodb-basics@sandbox.bs0jo.mongodb.net/mia_database?retryWrites=true&w=majority'
+const url = 'mongodb+srv://m001-student:m001-mongodb-basics@sandbox.bs0jo.mongodb.net/sample_database?retryWrites=true&w=majority'
 mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

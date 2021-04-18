@@ -6,15 +6,14 @@ const UserSchema = new mongoose.Schema({
     required: true,
     lowercase: true
   },
-  username: {
-    type: String,
-    required: true,
-    lowercase: true
-  },
   password: {
     type: String,
     required: true,
     lowercase: true
+  },
+  score: {
+    type: int,
+    default: 0
   },
 });
 
