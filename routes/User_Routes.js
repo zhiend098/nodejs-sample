@@ -16,10 +16,19 @@ app.get('/', async (req, res) => {
     res.send('Hello World!')
 });
 
+app.patch('/updateuser', async (req, res) => {
+    const user = await userModel.findOne({ email: req.body.email });
+    try {
+        res.send(users);
+    }catch (err) {
+        res.status(500).send(err);
+    }
+});
+
 app.post('/finduser', async (req, res) => {
     console.log(req.body)
     try {
-        const user = await userModel.findOne({ email: req.body.email,password: req.body.password});
+        const user = await userModel.findOne({ email: req.body.email, password: req.body.password });
         if (!user) {
             res.status(404)
             res.json({
