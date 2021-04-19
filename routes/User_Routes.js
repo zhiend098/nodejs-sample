@@ -17,7 +17,7 @@ app.get('/', async (req, res) => {
 });
 
 app.patch('/updateuser', async (req, res) => {
-    const user = await userModel.findOneAndUpdate({ email: req.body.email , score : req.body.score}, {new: true}).then((user) => {
+    userModel.findOneAndUpdate({ email: req.body.email , score : req.body.score}, {new: true}).then((user) => {
         res.send(user);
     }).catch((error) => {
         res.status(500).send(error);
