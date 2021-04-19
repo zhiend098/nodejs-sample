@@ -17,9 +17,8 @@ app.get('/', async (req, res) => {
 });
 
 app.patch('/updateuser', async (req, res) => {
-    const user = userModel.findOne({ email: req.body.email, score: req.body.score });
+    const user = userModel.findOneAndUpdate({ email: req.body.email, score: req.body.score });
     try {
-        await user.save();
         res.send(user);
     }catch (err) {
         res.status(500).send(err);
