@@ -17,12 +17,12 @@ app.get('/', async (req, res) => {
 });
 
 app.patch('/updateuser', async (req, res) => {
-    const user = await userModel.findOneAndUpdate({ email: req.body.email , score : req.body.score});
-    try {
+    const user = await userModel.findOneAndUpdate({ email: req.body.email , score : req.body.score}, {new: true}).then((user) => {
         res.send(user);
-    }catch (err) {
-        res.status(500).send(err);
-    }
+    }).catch((error) => {
+        res.status(500).send(error);
+    });
+    
 });
 
 app.post('/finduser', async (req, res) => {
