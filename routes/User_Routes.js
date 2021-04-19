@@ -17,9 +17,10 @@ app.get('/', async (req, res) => {
 });
 
 app.patch('/updateuser', async (req, res) => {
-    const user = await userModel.findOne({ email: req.body.email });
+    const user = userModel.findOne({ email: req.body.email, score: req.body.score });
     try {
-        res.send(users);
+        await user.save();
+        res.send(user);
     }catch (err) {
         res.status(500).send(err);
     }
