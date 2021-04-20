@@ -17,7 +17,7 @@ app.get('/', async (req, res) => {
 });
 
 app.patch('/updateuser', async (req, res) => {
-    const user = await userModel.findOneAndUpdate({ email: req.body.email}, req.body);
+    const user = await userModel.findOneAndUpdate({ username: req.body.username}, req.body);
     try {
         res.send(users);
     }catch (err) {
@@ -28,11 +28,11 @@ app.patch('/updateuser', async (req, res) => {
 app.post('/finduser', async (req, res) => {
     console.log(req.body)
     try {
-        const user = await userModel.findOne({ email: req.body.email, password: req.body.password });
+        const user = await userModel.findOne({ username: req.body.username, password: req.body.password });
         if (!user) {
             res.status(404)
             res.json({
-                message: `Cannot find an User with the email: ${req.body.email}`
+                message: `Cannot find an User with the username: ${req.body.username}`
             })
             res.end()
             return
